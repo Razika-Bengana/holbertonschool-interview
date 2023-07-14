@@ -2,9 +2,13 @@
 // script that prints all characters of a Star Wars movie with the Star wars API
 const request = require('request');
 
-function getCharName (url) {
+const url = 'https://swapi-api.hbtn.io/api/films/';
+const film = process.argv[2];
+let mico = '';
+
+function whois (whom) {
   return new Promise((resolve, reject) => {
-    request(url, (error, response, body) => {
+    request(whom, (error, response, body) => {
       if (error) {
         reject(error);
       }
@@ -13,23 +17,21 @@ function getCharName (url) {
   });
 }
 
-async function charsInFilm (urlList) {
+async function charlist () {
   try {
-    let name;
-    for (const url of urlList) {
-      name = await getCharName(url);
-      console.log(name);
+    for (const character in mico.characters) {
+      const whom = mico.characters[character];
+      const toprint = await whois(whom);
+      console.log(toprint);
     }
   } catch (error) {
     console.error(error);
   }
 }
 
-const filmsURL = 'https://swapi-api.hbtn.io/api/films/' + process.argv[2];
-request(filmsURL, function (error, response, body) {
-  if (error) {
-    console.error(error);
+request(url + film, function (error, response, body) {
+  if (!error && response.statusCode === 200) {
+    mico = JSON.parse(body);
+    charlist(mico);
   }
-  const urlList = JSON.parse(body).characters;
-  charsInFilm(urlList);
 });
