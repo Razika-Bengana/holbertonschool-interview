@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ Calculates water between walls """
 
+
 def rain(walls):
     """ Calculate the amount of water trapped between walls """
 
@@ -19,7 +20,10 @@ def rain(walls):
         left_max = max(walls[:current_wall_index])
         right_max = max(walls[current_wall_index + 1:])
 
-        # Calculate the trapped water between the current wall and the lower of the two boundary walls
+        """
+        Calculate the trapped water between the current wall and the lower
+        of the two boundary walls
+        """
         water_level = min(left_max, right_max)
         if water_level > walls[current_wall_index]:
             total_water_units += water_level - walls[current_wall_index]
