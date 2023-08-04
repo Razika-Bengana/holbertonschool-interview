@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 
-int recursive_advanced_binary(int *array, int low, int high, int value);
+int binary_search_recursion(int *array, int value, size_t left, size_t right);
 int advanced_binary(int *array, size_t size, int value);
 
 
