@@ -34,11 +34,11 @@ int recursive_advanced_binary(int *array, int low, int high, int value)
 /* If the value is found, check if it's the first occurrence */
 		if (array[mid] == value)
 		{
-			if (mid == 0 || array[mid - 1] != value)
+			if (mid == low || array[mid - 1] != value)
 				return (mid);
 			else
 				return (recursive_advanced_binary(array, low,
-								  mid, value));
+								  mid - 1, value));
 		}
 
 /* If the value is greater, search the left subarray */
