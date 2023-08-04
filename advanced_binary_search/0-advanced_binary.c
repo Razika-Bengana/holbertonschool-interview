@@ -38,7 +38,7 @@ int recursive_advanced_binary(int *array, int low, int high, int value)
 				return (mid);
 			else
 				return (recursive_advanced_binary(array, low,
-								  mid - 1, value));
+								  mid, value));
 		}
 
 /* If the value is greater, search the left subarray */
