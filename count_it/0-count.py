@@ -1,8 +1,5 @@
 #!/usr/bin/python3
-"""
-0-count
-"""
-
+""" 0-count """
 import requests
 
 
