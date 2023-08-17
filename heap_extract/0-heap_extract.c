@@ -1,7 +1,7 @@
 #include "binary_trees.h"
 
 /**
- * heap_size - Cprogram that calculates the size of a binary heap
+ * heap_size - program that calculates the size of a binary heap
  *
  * @root: a pointer to the root of the heap
  *
@@ -34,6 +34,7 @@ void heapify_down(heap_t **root)
 		heap_t *largest = node;
 		heap_t *left = node->left;
 		heap_t *right = node->right;
+		int temp;
 
 		if (left != NULL && left->n > largest->n)
 			largest = left;
@@ -43,7 +44,7 @@ void heapify_down(heap_t **root)
 
 		if (largest != node)
 		{
-			int temp = node->n;
+			temp = node->n;
 			node->n = largest->n;
 			largest->n = temp;
 			node = largest;
@@ -65,11 +66,15 @@ void heapify_down(heap_t **root)
 
 int heap_extract(heap_t **root)
 {
+	int extracted_value;
+	sie_t size;
+	heap_t *last_node;
+
 	if (root == NULL || *root == NULL)
 		return (0);
 
-	int extracted_value = (*root)->n;
-	size_t size = heap_size(*root);
+	extracted_value = (*root)->n;
+	size = heap_size(*root);
 
 	if (size == 1)
 	{
@@ -78,7 +83,8 @@ int heap_extract(heap_t **root)
 		return (extracted_value);
 	}
 
-	heap_t *last_node = *root;
+	last_node = *root;
+
 	while (last_node->right != NULL)
 	{
 		if (heap_size(last_node->right) == size - 1)
@@ -93,7 +99,7 @@ int heap_extract(heap_t **root)
 	else
 		last_node->parent->right = NULL;
 	heapify_down(root);
-	
+
 	free(last_node);
 
 	return (extracted_value);
