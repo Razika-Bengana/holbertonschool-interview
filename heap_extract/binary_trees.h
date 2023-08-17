@@ -27,8 +27,9 @@ typedef struct binary_tree_s
 typedef struct binary_tree_s heap_t;
 
 
-size_t heap_size(const heap_t *root);
-void heapify_down(heap_t **root);
+void heapify(binary_tree_t *current_node);
+int count_nodes(heap_t *current_node);
+binary_tree_t *get_last_node(heap_t *current_node);
 int heap_extract(heap_t **root);
 
 
