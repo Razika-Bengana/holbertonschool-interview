@@ -67,7 +67,7 @@ void heapify_down(heap_t **root)
 int heap_extract(heap_t **root)
 {
 	int extracted_value;
-	sie_t size;
+	size_t size;
 	heap_t *last_node;
 
 	if (root == NULL || *root == NULL)
