@@ -19,14 +19,13 @@
 
 listint_t *find_listint_loop(listint_t *head)
 {
+	listint_t *tortoise = head;
+	listint_t *hare = head;
+
 	if (head == NULL || head->next == NULL)
 	{
 		return (NULL);
 	}
-
-	listint_t *tortoise = head;
-	listint_t *hare = head;
-
 
 	while (hare != NULL && hare->next != NULL)
 	{
