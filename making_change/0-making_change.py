@@ -9,21 +9,14 @@ def makeChange(coins, total):
     Given a pile of coins of different values,
     determine the fewest number of coins needed to meet a given amount total
     """
-    if total <= 0:
-        return 0
-    if len(coins) <= 0:
+    dp = [float('inf')] * (total + 1)
+    dp[0] = 0
+
+    for coin in coins:
+        for amount in range(coin, total + 1):
+            dp[amount] = min(dp[amount], dp[amount - coin] + 1)
+
+    if dp[total] == float('inf'):
         return -1
-
-    sc = sorted(coins)
-    sc = sc[::-1]
-
-    num = 0
-    running = total
-    for c in sc:
-        while (running - c >= 0):
-            running = running - c
-            num = num + 1
-
-    if running != 0 and running - sc[-1] < 0:
-        return -1
-    return num
+    else:
+        return dp[total]
