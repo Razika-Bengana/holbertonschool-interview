@@ -29,7 +29,7 @@ int sort_by_current_digit(int *array, ssize_t size, int *tmp, long exp)
 }
 
 /**
- * perform_radix_sort - Program that sorts an array of integers using
+ * radix_sort - Program that sorts an array of integers using
  * Radix sort algorithm
  *
  * @array: The array to sort
