@@ -14,11 +14,14 @@
 
 void counting_sort(int *array, size_t size, int digit)
 {
-	int output[size];
+	int *output = malloc(size * sizeof(int));
 	int count[10] = {0};
 	int d;
 	size_t i;
 	int j;
+
+	if (output == NULL)
+		return;
 
 /* Count occurrences of each digit at the given place */
 	for (i = 0; i < size; i++)
@@ -46,6 +49,7 @@ void counting_sort(int *array, size_t size, int digit)
 	{
 		array[i] = output[i];
 	}
+	free(output);
 }
 
 /**
